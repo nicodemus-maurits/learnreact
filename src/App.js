@@ -12,6 +12,10 @@ const app = (props) => {
         ]
     });
 
+    const [otherState, setOtherState] = useState({
+        otherState: "some other state"
+    });
+
     const switchNameHandler = () => {
         setPersonsState(
             {

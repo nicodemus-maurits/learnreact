@@ -37,11 +37,20 @@ class App extends Component {
     ]
 
     render() {
+        const buttonStyle = {
+            padding: '8px',
+            cursor: 'pointer',
+            background: 'white',
+            border: '1px solid blue',
+        };
+
         return (
             <div className="App">
                 <h1>This is a sample react app</h1>
                 <p>and it works</p>
-                <button onClick={() => this.switchNameHandler("second method, not recommended")}>Switch Name</button>
+                <button
+                    style={buttonStyle} 
+                    onClick={() => this.switchNameHandler("second method, not recommended")}>Switch Name</button>
                 <Person 
                     name={this.state.persons[0].name} 
                     age={this.state.persons[0].age} />

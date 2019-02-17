@@ -9,7 +9,9 @@ class App extends Component {
             { name: "Alice", age: 20 },
             { name: "Bob", age: 21 },
             { name: "Charlie", age: 19 }
-        ]
+        ],
+        otherState: "Some other value",
+        showPersons: false, 
     }
 
     switchNameHandler = (newName) => {
@@ -24,7 +26,7 @@ class App extends Component {
         )
     }
 
-    nameChangedHandler = (event) => [
+    nameChangedHandler = (event) => {
         this.setState(
             {
                 persons: [
@@ -34,7 +36,12 @@ class App extends Component {
                 ]
             }
         )
-    ]
+    }
+
+    togglePersonsHandler = () => {
+        const doesShow = this.state.showPersons;
+        this.setState({showPersons: !doesShow});
+    }
 
     render() {
         const buttonStyle = {
@@ -50,18 +57,25 @@ class App extends Component {
                 <p>and it works</p>
                 <button
                     style={buttonStyle} 
-                    onClick={() => this.switchNameHandler("second method, not recommended")}>Switch Name</button>
-                <Person 
-                    name={this.state.persons[0].name} 
-                    age={this.state.persons[0].age} />
-                <Person 
-                    name={this.state.persons[1].name} 
-                    age={this.state.persons[1].age}
-                    click={this.switchNameHandler.bind(this, "first method, recommended")}
-                    changed={this.nameChangedHandler}>Hobby: Playing Bass</Person>
-                <Person 
-                    name={this.state.persons[2].name} 
-                    age={this.state.persons[2].age} />
+                    onClick={this.togglePersonsHandler}>Toggle Persons
+                </button>
+
+                {
+                    this.state.showPersons ? 
+                    <div>
+                    <Person 
+                        name={this.state.persons[0].name} 
+                        age={this.state.persons[0].age} />
+                    <Person 
+                        name={this.state.persons[1].name} 
+                        age={this.state.persons[1].age}
+                        click={this.switchNameHandler.bind(this, "first method, recommended")}
+                        changed={this.nameChangedHandler}>Hobby: Playing Bass</Person>
+                    <Person 
+                        name={this.state.persons[2].name} 
+                        age={this.state.persons[2].age} />
+                </div> : null
+                }
             </div>
         );
     }

@@ -43,6 +43,14 @@ class App extends Component {
         this.setState({showPersons: !doesShow});
     }
 
+    deletePersonHandler = (personIndex) => {
+        // this basically works the same
+        // const personsTemp = this.state.persons.slice();
+        const personsTemp = [...this.state.persons];
+        personsTemp.splice(personIndex, 1);
+        this.setState({persons: personsTemp});
+    }
+
     render() {
         const buttonStyle = {
             padding: '8px',

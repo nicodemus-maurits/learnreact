@@ -51,18 +51,11 @@ class App extends Component {
             border: '1px solid blue',
         };
 
-        return (
-            <div className="App">
-                <h1>This is a sample react app</h1>
-                <p>and it works</p>
-                <button
-                    style={buttonStyle} 
-                    onClick={this.togglePersonsHandler}>Toggle Persons
-                </button>
+        let persons = null;
 
-                {
-                    this.state.showPersons ? 
-                    <div>
+        if (this.state.showPersons) {
+            persons = (
+                <div>
                     <Person 
                         name={this.state.persons[0].name} 
                         age={this.state.persons[0].age} />
@@ -74,8 +67,20 @@ class App extends Component {
                     <Person 
                         name={this.state.persons[2].name} 
                         age={this.state.persons[2].age} />
-                </div> : null
-                }
+                </div>
+            );
+        }
+
+        return (
+            <div className="App">
+                <h1>This is a sample react app</h1>
+                <p>and it works</p>
+                <button
+                    style={buttonStyle} 
+                    onClick={this.togglePersonsHandler}>Toggle Persons
+                </button>
+
+                {persons}
             </div>
         );
     }

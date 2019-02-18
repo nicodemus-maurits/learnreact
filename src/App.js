@@ -59,7 +59,7 @@ class App extends Component {
         const buttonStyle = {
             padding: '8px',
             cursor: 'pointer',
-            background: 'white',
+            background: 'green',
             border: '1px solid blue',
         };
 
@@ -77,6 +77,8 @@ class App extends Component {
                     })}
                 </div>
             );
+
+            buttonStyle.background = "red";
         }
 
         return (
